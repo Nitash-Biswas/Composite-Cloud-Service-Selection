@@ -23,6 +23,12 @@ The proposed approach is tested against two of the popular meta-heurisitc optimi
    
 ![Screenshot 2024-07-13 at 11 18 13 PM](https://github.com/user-attachments/assets/a7fd0190-94a6-4b14-a823-ad25841136c5)
 
+## Scalability
+Evaluated scalability of the ACO model by analyzing convergence time across different service path lengths (10 to 100 services) and service candidate set sizes (5 to 40), simulating cloud service providers like AWS, Google Cloud, and Azure, and covering user-requested services such as virtual machines, databases, and machine learning models.
+
+![Screenshot 2024-09-10 at 11 16 31 PM](https://github.com/user-attachments/assets/b3b2d92d-3359-46fb-b97c-875c300819a2)
+
+
 ## Result
 The most suitable combination of different cloud services for requested services is provided, 
 
