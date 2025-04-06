@@ -1,6 +1,60 @@
 # Dynamic Cloud Service Selection Model
 
-## Summary
+## The Problem
+
+- Imagine you need some cloud services for your next project, maybe some virtual machines (like AWS EC2, Google Compute Engine), storage services (like AWS S3, Google Cloud), Database options (MongoDB Atlas, Firebase), or AI alternatives (OpenAI, AWS Rekognition).
+- **But with this vast array of choices, which ones you should use? And from which of the providers?**
+- Some offer lower latencies than others (response time), some are more cost affective, some are from the major providers like Google and AWS with years of trust and millions of users behind them (more availability) where some offer more resistance to any unexpected failures.
+- Often, these choices contradict each other, like if a service offers low latency, it comes at a higher cost.
+- So there is need of a way to provide all these required cloud services to the user, from different providers, taking account of all these metrics (attributes) in the most effective way.
+
+## The Idea
+- You’re not just minimizing one thing (like in Travelling Salesman Problem), but balancing multiple conflicting objectives cost, latency, availability, and reliability.
+- This is best seen as a `multi-objective combinatorial optimization problem.`
+- This belongs to a class of problems in which finding optimal solutions can become extremely time-consuming as the problem size increases. 
+- So we use `Metaheuristic Algorithms` as they provide good, but not necessarily optimal, solutions in a reasonable amount of time.
+- Examples: `Ant Colony Optimization (ACO)`, `Genetic Algorithms (GA)`, `Particle Swarm Optimization (PSO)`  
+
+## 📊 Modeling It Mathematically
+
+Suppose you need 4 cloud services:
+- Compute (e.g., EC2, GCE)
+- Storage (e.g., S3, GCS)
+- Database (e.g., MongoDB Atlas, Firebase)
+- AI/ML (e.g., OpenAI, Rekognition)
+
+Let:
+
+- `S = {s₁, s₂, ..., sₙ}` be the list of candidate cloud services from different providers.
+- Each service `sᵢ` has associated attributes:
+  - `c(sᵢ)`: Cost
+  - `l(sᵢ)`: Latency (response time)
+  - `a(sᵢ)`: Availability (uptime / SLA)
+  - `r(sᵢ)`: Reliability
+
+The goal is to **select one service per required category** (compute, storage, etc.), such that the overall solution:
+
+- Minimizes total cost
+- Minimizes latency
+- Maximizes availability
+- Maximizes reliability
+
+This can be formulated as a **multi-objective optimization** problem:
+
+### 🎯 Objective Function
+
+We define a weighted sum objective function:
+
+minimize α * Σ c(sᵢ) + β * Σ l(sᵢ) - γ * Σ a(sᵢ) - δ * Σ r(sᵢ)
+
+Where:
+- `α`, `β`, `γ`, `δ` are tunable weights that reflect the user’s priority (e.g., cost-sensitive vs performance-sensitive).
+- The summation `Σ` is over the selected services from each required category.
+
+
+
+
+## Proposed Solution
 
 A dynamic cloud service selection model powered by Ant Colony Optimization (ACO). The objectives include:
 
